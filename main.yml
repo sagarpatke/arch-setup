@@ -1,0 +1,67 @@
+---
+- hosts: localhost
+  become: true
+  tasks:
+  - name: Add archlinuxfr repository
+    copy:
+      src: files/etc/pacman.conf
+      dest: /etc/pacman.conf
+      owner: root
+      group: root
+      mode: 644
+  - name: Update the package cache
+    package:
+      update_cache: yes
+  - name: Install necessary utilities
+    package:
+      name: "{{ item }}"
+    with_items:
+      - vim
+      - maven
+      - base-devel
+      - yaourt
+  - name: Install programming tools
+    package:
+      name: "{{ item }}"
+    with_items:
+      - nodejs
+      - npm
+      - yarn
+      - jdk8-openjdk
+      - jdk9-openjdk
+      - maven
+- hosts: localhost
+  become: true
+  tasks:
+  - name: GUI Setup
+    package:
+      name: "{{ item }}"
+    with_items:
+      - gnome
+      - networkmanager
+      - gnome-tweak-tool
+      - libreoffice-fresh
+      - firefox
+      - pulseaudio-alsa
+      - pulseaudio-bluetooth
+      - bluez
+      - bluez-libs
+      - bluez-utils
+      - tilda
+  - name: Enable GUI Services
+    service:
+      name: "{{ item }}"
+      enabled: yes
+      state: started
+    with_items:
+      - gdm
+      - NetworkManager
+      - bluetooth
+  - name: Install Development Tools
+    package:
+      name: "{{ item }}"
+    with_items:
+      - git
+      - sublime-text-dev
+      - eclipse-java
+      - atom
