@@ -16,8 +16,11 @@
     package:
       name: "{{ item }}"
     with_items:
+      - openssh
       - vim
-      - maven
+      - screen
+      - powerline-fonts
+      - zsh-theme-powerlevel9k
       - base-devel
       - yaourt
   - name: Install programming tools
@@ -30,6 +33,28 @@
       - jdk8-openjdk
       - jdk9-openjdk
       - maven
+  - name: Install DevOps utilities
+    package:
+      name: "{{ item }}"
+    with_items:
+      - virtualbox-host-modules-arch
+      - virtualbox
+      - vagrant
+      - docker
+  - name: Add user to docker group
+    user:
+      name: "{{ ansible_user_id }}"
+      append: yes
+      groups: docker
+- hosts: localhost
+  tasks:
+  - name: Copy user preferences
+    copy:
+      src: "files/HOME/{{ item }}"
+      dest: "{{ ansible_user_dir }}/{{ item }}"
+    with_items:
+      - .screenrc
+      - .zshrc
 - hosts: localhost
   become: true
   tasks:
