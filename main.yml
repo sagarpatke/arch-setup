@@ -21,6 +21,7 @@
       - screen
       - powerline-fonts
       - zsh-theme-powerlevel9k
+      - papirus-icon-theme
       - base-devel
       - yaourt
   - name: Install programming tools
@@ -66,6 +67,8 @@
       - networkmanager
       - gnome-tweak-tool
       - libreoffice-fresh
+      - evolution
+      - evolution-ews
       - firefox
       - pulseaudio-alsa
       - pulseaudio-bluetooth
