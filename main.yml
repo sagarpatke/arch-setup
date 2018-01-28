@@ -76,15 +76,6 @@
       - bluez-libs
       - bluez-utils
       - tilda
-  - name: Enable GUI Services
-    service:
-      name: "{{ item }}"
-      enabled: yes
-      state: started
-    with_items:
-      - gdm
-      - NetworkManager
-      - bluetooth
   - name: Install Development Tools
     package:
       name: "{{ item }}"
@@ -93,3 +84,11 @@
       - sublime-text-dev
       - eclipse-java
       - atom
+  - name: Enable GUI Services
+    service:
+      name: "{{ item }}"
+      enabled: yes
+    with_items:
+      - gdm
+      - bluetooth
+      - NetworkManager
