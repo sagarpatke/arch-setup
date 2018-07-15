@@ -23,7 +23,6 @@
       - zsh-theme-powerlevel9k
       - papirus-icon-theme
       - base-devel
-      - yaourt
   - name: Install programming tools
     package:
       name: "{{ item }}"
