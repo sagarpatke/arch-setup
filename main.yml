@@ -31,7 +31,7 @@
       - npm
       - yarn
       - jdk8-openjdk
-      - jdk9-openjdk
+      - jdk10-openjdk
       - maven
   - name: Install DevOps utilities
     package:
@@ -80,7 +80,6 @@
       name: "{{ item }}"
     with_items:
       - git
-      - sublime-text-dev
       - eclipse-java
       - atom
   - name: Enable GUI Services
