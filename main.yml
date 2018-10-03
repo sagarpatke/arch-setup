@@ -2,13 +2,13 @@
 - hosts: localhost
   become: true
   tasks:
-  - name: Add archlinuxfr repository
-    copy:
-      src: files/etc/pacman.conf
-      dest: /etc/pacman.conf
-      owner: root
-      group: root
-      mode: 644
+#  - name: Add archlinuxfr repository
+#    copy:
+#      src: files/etc/pacman.conf
+#      dest: /etc/pacman.conf
+#      owner: root
+#      group: root
+#      mode: 644
   - name: Update the package cache
     package:
       update_cache: yes
@@ -27,9 +27,9 @@
     package:
       name: "{{ item }}"
     with_items:
-      - nodejs
-      - npm
-      - yarn
+#      - nodejs
+#      - npm
+#      - yarn
       - jdk8-openjdk
       - jdk10-openjdk
       - maven
@@ -81,7 +81,7 @@
     with_items:
       - git
       - eclipse-java
-      - atom
+#      - atom
   - name: Enable GUI Services
     service:
       name: "{{ item }}"
